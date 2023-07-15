@@ -34,7 +34,9 @@ def processing_password() -> str:
                 else:
                     print('Password does not meet the specified requirements. Please try again.')
             elif variant == 2:
-                return generate_password()
+                length_input = input("Enter the desired length (>= 8) of the password (Press enter for length '8'): ")
+                length = 8 if (length_input == '' or int(length_input) < 8) else int(length_input)
+                return generate_password(length)
             else:
                 print('Invalid input. Please enter either 1 or 2.')
 
