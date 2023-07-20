@@ -51,15 +51,19 @@ def prompt_boolean_input(message: str) -> bool:
 
 
 #function to process keyboard input commands for integer parameter.
-def prompt_integer_input(message: int) -> int:
+def prompt_integer_input(message: str) -> int:
     while True:
         user_input = input(message)
         try:
             # get integer
-            lenght = abs(int(user_input))
-            if lenght == 0:
-                print("Password length cannot be 0.")
-                raise ValueError()
+            if user_input == '':
+                lenght = 8
+            else:
+                lenght = abs(int(user_input))
+                if lenght == 0:
+                    print("Password length cannot be 0.")
+                    raise ValueError()
+
             return lenght
         except ValueError:
             print("Invalid input. Please enter an integer.")
